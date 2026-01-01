@@ -2,14 +2,28 @@ package main
 
 import "fmt"
 
+// Vamos a ver y usar un poco sobre lo que es la recursividad
+// Veremos el caso de la recursividad con fibonacci
 func main() {
-	/*Vamos a hablar sobre las impresiones por pantalla
-	en nuestra consolas tenemos 2 grandes candidatos el primero es
-	el fmt.printf() y despues tenemos el fmt.Println()*/
-	algo := "Algoritmos y Programacion"
+	var resultado int = factorial(4)
+	fmt.Println(resultado)
 
-	fmt.Println("Esto", "es", algo, 2)
+	var resultado_2 int = fibonacci(7)
+	fmt.Println(resultado_2)
+}
 
-	//Tambien tenemos el fmt.Printf
-	fmt.Printf("Esto es %s %d\n", algo, 2)
+func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+func fibonacci(n int) int {
+	if n == 0 {
+		return 1
+	} else if n == 1 {
+		return 1
+	} else {
+		return fibonacci(n-1) + fibonacci(n-2)
+	}
 }
