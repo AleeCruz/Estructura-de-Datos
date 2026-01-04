@@ -2,28 +2,33 @@ package main
 
 import "fmt"
 
-// Vamos a ver y usar un poco sobre lo que es la recursividad
-// Veremos el caso de la recursividad con fibonacci
+func insertionSort(A []int) {
+	// Empezamos desde el segundo elemento (índice 1)
+	// En el pseudocódigo es j = 2
+	for j := 1; j < len(A); j++ {
+		key := A[j] // El elemento actual a insertar
+
+		// Empezamos a comparar con los elementos a la izquierda
+		i := j - 1
+
+		// Mientras el elemento a la izquierda sea mayor que la llave,
+		// lo desplazamos a la derecha
+		for i >= 0 && A[i] > key {
+			A[i+1] = A[i]
+			i = i - 1
+		}
+
+		// Colocamos la llave en su posición correcta
+		A[i+1] = key
+	}
+}
+
 func main() {
-	var resultado int = factorial(4)
-	fmt.Println(resultado)
 
-	var resultado_2 int = fibonacci(7)
-	fmt.Println(resultado_2)
-}
+	arreglo := []int{4, 1, 5, 7, 8, 2, 1, 4}
+	fmt.Println("Original:", arreglo)
 
-func factorial(n int) int {
-	if n == 0 {
-		return 1
-	}
-	return n * factorial(n-1)
-}
-func fibonacci(n int) int {
-	if n == 0 {
-		return 1
-	} else if n == 1 {
-		return 1
-	} else {
-		return fibonacci(n-1) + fibonacci(n-2)
-	}
+	insertionSort(arreglo)
+
+	fmt.Println("Ordenada:", arreglo)
 }
