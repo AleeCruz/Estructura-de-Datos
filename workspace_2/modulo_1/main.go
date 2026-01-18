@@ -1,4 +1,4 @@
-package main
+/*package main
 
 import "fmt"
 
@@ -31,4 +31,31 @@ func main() {
 	insertionSort(arreglo)
 
 	fmt.Println("Ordenada:", arreglo)
+}
+*/
+
+package main
+
+import "fmt"
+
+func insertionSort(A []int) {
+	for j := 1; j < len(A); j++ {
+		key := A[j]
+		i := j - 1
+		// Este bucle desplaza los números hacia la derecha
+		for i >= 0 && A[i] > key {
+			A[i+1] = A[i]
+			i = i - 1
+		}
+		A[i+1] = key // Aquí se inserta el número en su lugar
+	}
+}
+
+func main() {
+	arreglo := []int{5, 2, 4, 1} // Un arreglo desordenado
+	fmt.Println("Inicio:", arreglo)
+
+	insertionSort(arreglo) // <-- PON EL BREAKPOINT AQUÍ
+
+	fmt.Println("Fin:", arreglo)
 }
